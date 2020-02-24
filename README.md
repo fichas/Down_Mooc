@@ -8,13 +8,13 @@ pip install requests
 ```
 ### 使用方法如下
 找到你课程的主页，一个形如下方链接格式的网址：
-https://mooc1-2.chaoxing.com/course/200029621.html
+https://mooc1-2.chaoxing.com/course/206751495.html
 然后把程序解压，在cmd中运行  
 ```python
- python mooc.py https://mooc1-2.chaoxing.com/course/200029621.html
+ python mooc.py https://mooc1-2.chaoxing.com/course/206751495.html
 ```
 程序会自动在此目录下生成两个文件：
 ```c++
 output.txt //课程的视频链接，需自行下载
-name.bat //将此文件放在视频存放的位置，会把视频的名称自动修正
+name.bat //将此文件放在视频存放的位置，会把视频的名称自动修正(有的视频有问题，可能老师的命名方式比较奇怪，先鸽着)
 ```
