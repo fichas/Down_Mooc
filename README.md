@@ -14,5 +14,7 @@ https://mooc1-2.chaoxing.com/course/200029621.html
  python mooc.py https://mooc1-2.chaoxing.com/course/200029621.html
 ```
 程序会自动在此目录下生成两个文件：
-`output.txt //课程的视频链接，需自行下载`
-`name.bat //将此文件放在视频存放的位置，会把视频的名称自动修正`
+```c++
+output.txt //课程的视频链接，需自行下载
+name.bat //将此文件放在视频存放的位置，会把视频的名称自动修正
+```
