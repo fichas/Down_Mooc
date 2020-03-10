@@ -76,6 +76,20 @@ def get_cookie(strr):
         cookie_dict[key] = value
     return cookie_dict
 
+def obj(strings):
+    soup = BeautifulSoup(strings, 'lxml')
+    anss = []
+    for i in list(soup.select('iframe')):
+        #    print(i)
+        ss=str(i['data'])
+        ii=ss
+        try:
+            text = json.loads(ii)
+            anss.append(text['objectid'])
+        except:
+            anss = []
+    return anss
+
 if __name__ == '__main__':
     print('请输入要抓取的课程链接:')
     url=input('> ')
@@ -107,10 +121,10 @@ if __name__ == '__main__':
     process_bar = ShowProcess(len(knows), '下载链接已保存到output.txt')
     for i in knows:
         process_bar.show_process()
-        url='https://mooc1-1.chaoxing.com/knowledge/cards?clazzid='+clazzid+'&courseid='+courseid+'&knowledgeid='+str(i)
+        url='http://mooc1-1.chaoxing.com/knowledge/cards?clazzid='+clazzid+'&courseid='+courseid+'&knowledgeid='+str(i)
         sleep(0.5)
         response = requests.request("GET", url, headers=headers, cookies=cookie_dict)
-        tmp=objectid(response.text.encode('utf8'))
+        tmp=obj(response.text.encode('utf8'))
         ans+=tmp
 
     f = open("output.txt", "w")
