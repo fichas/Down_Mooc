@@ -9,6 +9,43 @@ from bs4 import BeautifulSoup
 import sys
 import os
 
+
+class ShowProcess():
+    """
+    显示处理进度的类
+    调用该类相关函数即可实现处理进度的显示
+    """
+    i = 0
+    max_steps = 0
+    max_arrow = 50
+    infoDone = 'done'
+
+    def __init__(self, max_steps, infoDone = 'Done'):
+        self.max_steps = max_steps
+        self.i = 0
+        self.infoDone = infoDone
+
+    def show_process(self, i=None):
+        if i is not None:
+            self.i = i
+        else:
+            self.i += 1
+        num_arrow = int(self.i * self.max_arrow / self.max_steps)
+        num_line = self.max_arrow - num_arrow
+        percent = self.i * 100.0 / self.max_steps
+        process_bar = '[' + '>' * num_arrow + '-' * num_line + ']'\
+                      + '%.2f' % percent + '%' + '\r'
+        sys.stdout.write(process_bar)
+        sys.stdout.flush()
+        if self.i >= self.max_steps:
+            self.close()
+
+    def close(self):
+        print('')
+        print(self.infoDone)
+        self.i = 0
+
+
 def objectid(strings):
     soup = BeautifulSoup(strings, 'lxml')
     anss=[]
@@ -65,13 +102,17 @@ if __name__ == '__main__':
         know=know[1:-1]
         knows.append(know)
 
+    print('获取到 %d 条任务,正在生成下载链接...'%len(knows))
+
+    process_bar = ShowProcess(len(knows), '下载链接已保存到output.txt')
     for i in knows:
+        process_bar.show_process()
         url='https://mooc1-1.chaoxing.com/knowledge/cards?clazzid='+clazzid+'&courseid='+courseid+'&knowledgeid='+str(i)
         sleep(0.5)
         response = requests.request("GET", url, headers=headers, cookies=cookie_dict)
         tmp=objectid(response.text.encode('utf8'))
         ans+=tmp
-        
+
     f = open("output.txt", "w")
     for i in ans:
         f.write('http://cs.ananas.chaoxing.com/download/'+str(i)+'\n')
