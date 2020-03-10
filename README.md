@@ -63,8 +63,9 @@ pip install requests BeautifulSoup4 lxml
    ```c++
    output.txt //课程的视频链接，需自行下载(可以使用IDM或迅雷等工具自行下载)
    ```
+   
 
-
+~~*碎碎念：好像把clazzid改成一个加1或减1的链接可以获取到未开放的课程？:eyes*~~
 
 ### 特别感谢
 
