@@ -1,6 +1,6 @@
 # Down_Mooc
 一个基于 Python3 的超星 mooc 课程内容获取工具，方便离线观看。
-
+或者 您也可以不用安装python，选用最新的releases：https://github.com/fichas/Down_Mooc/releases
 ### 安装
 
 请安装最新版的Python3，并且使用 `pip` 安装 3 个库：`requests` `BeautifulSoup4` `lxml`
