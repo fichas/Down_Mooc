@@ -87,7 +87,7 @@ def obj(strings):
             text = json.loads(ii)
             anss.append(text['objectid'])
         except:
-            anss = []
+            anss = anss
     return anss
 
 if __name__ == '__main__':
