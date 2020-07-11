@@ -37,15 +37,8 @@ pip install requests BeautifulSoup4 lxml
 
    https://mooc1-1.chaoxing.com/mycourse/studentcourse?courseId=1234561234&vc=1&clazzid=12345123&enc=1234567123456123456
 
-   在浏览器中登录后，按 `F12`，在浏览器控制台中执行
-
-   ```javascript
-   copy(document.cookie);
-   ```
-
-   执行完成后，cookies 会自动复制到粘贴板。
-
-   （也可以 `console.log(document.cookie);` 然后手动复制输出结果。）
+   在浏览器中登录后参照[教程链接](https://jingyan.baidu.com/article/0aa2237505193488cd0d647f.html)里的方式可以获取到cookie。
+   
 
    在调用程序获取课程的时候，会自动要求输入 cookies，粘贴便是。
 
